@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { getSortedPostsData } from '@/lib/markdown';
 
 export default function BlogListing() {
@@ -18,13 +19,13 @@ export default function BlogListing() {
                         <time style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase' }}>
                             {new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                         </time>
-                        <a href={`/blog/${id}`}>
+                        <Link href={`/blog/${id}`}>
                             <h2 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: 'var(--secondary-black)' }}>{title}</h2>
-                        </a>
+                        </Link>
                         <p style={{ color: 'var(--text-main)', maxWidth: '600px' }}>{description}</p>
-                        <a href={`/blog/${id}`} style={{ fontSize: '0.9rem', fontWeight: 600, textDecoration: 'underline', marginTop: '0.5rem' }}>
+                        <Link href={`/blog/${id}`} style={{ fontSize: '0.9rem', fontWeight: 600, textDecoration: 'underline', marginTop: '0.5rem' }}>
                             Read Article &rarr;
-                        </a>
+                        </Link>
                     </article>
                 ))}
             </div>

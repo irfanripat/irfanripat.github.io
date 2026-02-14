@@ -1,5 +1,4 @@
-"use client";
-
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 export default function AnimatedHome({ latestPosts }) {
@@ -81,21 +80,22 @@ export default function AnimatedHome({ latestPosts }) {
                             <time style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 600 }}>
                                 {new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                             </time>
-                            <a href={`/blog/${id}`}>
+                            <Link href={`/blog/${id}`}>
                                 <h3 style={{ fontSize: '1.25rem', marginBottom: '0.25rem' }}>{title}</h3>
-                            </a>
+                            </Link>
                             <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', maxWidth: '600px' }}>
                                 {description}
                             </p>
                         </motion.article>
                     ))}
-                    <motion.a
-                        variants={itemVariants}
-                        href="/blog"
-                        style={{ fontWeight: 600, fontSize: '0.9rem', marginTop: '1rem', textDecoration: 'underline' }}
-                    >
-                        View all articles &rarr;
-                    </motion.a>
+                    <Link href="/blog" style={{ textDecoration: 'none' }}>
+                        <motion.span
+                            variants={itemVariants}
+                            style={{ display: 'inline-block', fontWeight: 600, fontSize: '0.9rem', marginTop: '1rem', textDecoration: 'underline', color: 'inherit' }}
+                        >
+                            View all articles &rarr;
+                        </motion.span>
+                    </Link>
                 </div>
             </motion.div>
         </motion.div>

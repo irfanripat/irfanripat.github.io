@@ -1,4 +1,5 @@
 import "./globals.css";
+import Link from "next/link";
 import FloatingBackground from "@/components/FloatingBackground";
 import { Providers } from "@/components/Providers";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -23,9 +24,9 @@ export default function RootLayout({ children }) {
           <FloatingBackground />
           <div className="container" style={{ position: 'relative', zIndex: 1 }}>
             <nav className="nav">
-              <a href="/" style={{ fontWeight: 700, fontSize: '1.2rem' }}>irfan.</a>
+              <Link href="/" style={{ fontWeight: 700, fontSize: '1.2rem' }}>irfan.</Link>
               <div className="nav-links" style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
-                <a href="/blog">Blog</a>
+                <Link href="/blog">Blog</Link>
                 <ThemeToggle />
               </div>
             </nav>
