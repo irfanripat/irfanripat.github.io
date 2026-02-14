@@ -45,17 +45,31 @@ export default function Prank() {
 
         setActive(true);
 
-        // Create audio and loop it continuously
+        // Create audio instance
         const audio = new Audio('/irfanripat/audio/prank.mp3');
         audio.volume = 1.0;
-        audio.loop = true; // Loop the audio
+
+        let isPlaying = true;
+
+        // Play and replay when it ends
+        const playLoop = () => {
+            if (isPlaying) {
+                audio.currentTime = 0;
+                audio.play().catch(err => console.log('Audio play failed:', err));
+            }
+        };
+
+        // Set up loop on audio end
+        audio.addEventListener('ended', playLoop);
 
         // Start playing
-        audio.play().catch(err => console.log('Audio play failed:', err));
+        playLoop();
 
         // Stop after 10 seconds when prank ends
         setTimeout(() => {
+            isPlaying = false;
             audio.pause();
+            audio.removeEventListener('ended', playLoop);
             audio.currentTime = 0;
         }, 10000);
     };
