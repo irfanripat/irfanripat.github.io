@@ -45,17 +45,16 @@ export default function Prank() {
 
         setActive(true);
 
-        // Play "Moo" sound sound multiple times
-        const speak = () => {
-            const msg = new SpeechSynthesisUtterance("Mooooooooooo");
-            msg.pitch = Math.random() * 1.5;
-            msg.rate = 0.5;
-            window.speechSynthesis.speak(msg);
+        // Play the audio clip multiple times with slight delays
+        const playAudio = () => {
+            const audio = new Audio('/irfanripat/audio/prank.mp3');
+            audio.volume = 1.0;
+            audio.play().catch(err => console.log('Audio play failed:', err));
         };
 
-        speak();
-        setTimeout(speak, 500);
-        setTimeout(speak, 1200);
+        playAudio();
+        setTimeout(playAudio, 500);
+        setTimeout(playAudio, 1200);
     };
 
     return (
