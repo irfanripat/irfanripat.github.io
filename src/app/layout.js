@@ -3,7 +3,6 @@ import Link from "next/link";
 import FloatingBackground from "@/components/FloatingBackground";
 import { Providers } from "@/components/Providers";
 import ThemeToggle from "@/components/ThemeToggle";
-import Prank from "@/components/Prank";
 
 export const metadata = {
   title: "Irfan Ripat | Software Engineer",
@@ -20,7 +19,6 @@ export default function RootLayout({ children }) {
       </head>
       <body suppressHydrationWarning>
         <Providers>
-          <Prank />
           <FloatingBackground />
           <div className="container" style={{ position: 'relative', zIndex: 1 }}>
             <nav className="nav">
