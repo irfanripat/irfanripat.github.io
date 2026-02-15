@@ -41,14 +41,14 @@ export default function AnimatedHome({ latestPosts }) {
                     I specialize in building high-performance distributed systems with Golang,
                     designing robust APIs, and optimizing backend infrastructure at scale.
                 </p>
-                <div style={{ display: 'flex', gap: '1.5rem', marginTop: '1.5rem', fontWeight: 600, fontSize: '0.9rem' }}>
-                    <a href="https://github.com/irfanripat" target="_blank">Github</a>
-                    <a href="https://linkedin.com/in/irfanripat" target="_blank">Linkedin</a>
-                    <a href="https://www.instagram.com/irfanripat/" target="_blank">Instagram</a>
+                <div style={{ display: 'flex', gap: '1.5rem', marginTop: '2rem', fontWeight: 600, fontSize: '0.9rem' }}>
+                    <a href="https://github.com/irfanripat" target="_blank" rel="noopener noreferrer">Github</a>
+                    <a href="https://linkedin.com/in/irfanripat" target="_blank" rel="noopener noreferrer">Linkedin</a>
+                    <a href="https://www.instagram.com/irfanripat/" target="_blank" rel="noopener noreferrer">Instagram</a>
                 </div>
             </motion.header>
 
-            <motion.div variants={itemVariants} className="section">
+            <motion.div variants={itemVariants} style={{ marginTop: '3rem' }}>
                 <h2 className="label">Work Experience</h2>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem', marginTop: '2rem' }}>
 
@@ -63,7 +63,7 @@ export default function AnimatedHome({ latestPosts }) {
                         <div>
                             <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                                 Backend Engineer • TIX ID
-                                <a href="https://www.tix.id" target="_blank" style={{ fontSize: '1rem', opacity: 0.6 }}>↗</a>
+                                <a href="https://www.tix.id" target="_blank" rel="noopener noreferrer" style={{ fontSize: '1rem', opacity: 0.6, transition: 'opacity 0.2s ease' }}>↗</a>
                             </h3>
                             <p style={{ color: 'var(--text-muted)', marginBottom: '1rem', lineHeight: '1.6' }}>
                                 Built and maintained scalable backend services for movie and food ordering platforms. Refactored legacy systems, designed HLD documents, and enhanced deployment efficiency across multi-team codebases.
@@ -89,7 +89,7 @@ export default function AnimatedHome({ latestPosts }) {
                         <div>
                             <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                                 Backend Engineer • Waresix
-                                <a href="https://www.waresix.com" target="_blank" style={{ fontSize: '1rem', opacity: 0.6 }}>↗</a>
+                                <a href="https://www.waresix.com" target="_blank" rel="noopener noreferrer" style={{ fontSize: '1rem', opacity: 0.6, transition: 'opacity 0.2s ease' }}>↗</a>
                             </h3>
                             <p style={{ color: 'var(--text-muted)', marginBottom: '1rem', lineHeight: '1.6' }}>
                                 Developed and optimized backend services for logistics operations. Applied TDD practices, improved API performance, and contributed to scaling large backend systems while enhancing maintainability.
@@ -115,9 +115,10 @@ export default function AnimatedHome({ latestPosts }) {
                             display: 'inline-block',
                             fontWeight: 600,
                             fontSize: '0.9rem',
-                            marginTop: '2rem',
+                            marginTop: '1.5rem',
                             textDecoration: 'underline',
-                            color: 'inherit'
+                            color: 'inherit',
+                            transition: 'opacity 0.2s ease'
                         }}
                     >
                         View Full Résumé &rarr;
@@ -126,7 +127,7 @@ export default function AnimatedHome({ latestPosts }) {
                 </div>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="section">
+            <motion.div variants={itemVariants} style={{ marginTop: '3rem' }}>
                 <h2 className="label">Writing</h2>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', marginTop: '1.5rem' }}>
                     {latestPosts.map(({ id, date, title, description }) => (
@@ -150,7 +151,7 @@ export default function AnimatedHome({ latestPosts }) {
                     <Link href="/blog" style={{ textDecoration: 'none' }}>
                         <motion.span
                             variants={itemVariants}
-                            style={{ display: 'inline-block', fontWeight: 600, fontSize: '0.9rem', marginTop: '1rem', textDecoration: 'underline', color: 'inherit' }}
+                            style={{ display: 'inline-block', fontWeight: 600, fontSize: '0.9rem', marginTop: '0.5rem', textDecoration: 'underline', color: 'inherit', transition: 'opacity 0.2s ease' }}
                         >
                             View all articles &rarr;
                         </motion.span>
