@@ -21,14 +21,22 @@ export default function FloatingBackground() {
     const pathname = usePathname();
     const [mounted, setMounted] = useState(false);
     const [elements, setElements] = useState([]);
+    const [returning, setReturning] = useState(false);
     const prevPathnameRef = useRef(pathname);
 
     // Detect if we're on an article page
     const isArticlePage = pathname?.startsWith('/blog/') && pathname !== '/blog';
 
-    // Detect if we just came from an article page
-    const wasOnArticlePage = prevPathnameRef.current?.startsWith('/blog/') && prevPathnameRef.current !== '/blog';
-    const justLeftArticle = wasOnArticlePage && !isArticlePage;
+    // Detect if we just left an article page
+    useEffect(() => {
+        const wasOnArticlePage = prevPathnameRef.current?.startsWith('/blog/') && prevPathnameRef.current !== '/blog';
+        if (wasOnArticlePage && !isArticlePage) {
+            setReturning(true);
+            const timer = setTimeout(() => setReturning(false), 2000); // Match or slightly exceed transition duration
+            return () => clearTimeout(timer);
+        }
+        prevPathnameRef.current = pathname;
+    }, [pathname, isArticlePage]);
 
     useEffect(() => {
         setMounted(true);
@@ -45,11 +53,6 @@ export default function FloatingBackground() {
         }));
         setElements(newElements);
     }, []);
-
-    // Update previous pathname ref
-    useEffect(() => {
-        prevPathnameRef.current = pathname;
-    }, [pathname]);
 
     // Calculate nearest edge and exit position for each element
     const getExitPosition = (el) => {
@@ -95,14 +98,8 @@ export default function FloatingBackground() {
 
                 return (
                     <motion.div
-                        key={`${el.id}-${isArticlePage ? 'article' : 'list'}`}
-                        initial={justLeftArticle ? {
-                            // Start from edge when returning from article
-                            x: exitPos.x,
-                            y: exitPos.y,
-                            opacity: 0
-                        } : {
-                            // Normal initial position
+                        key={el.id} // Stable key prevents snapping
+                        initial={{
                             x: `${el.x}vw`,
                             y: `${el.y}vh`,
                             opacity: 0
@@ -122,13 +119,13 @@ export default function FloatingBackground() {
                             // Smooth exit transition
                             duration: 1.5,
                             ease: "easeInOut",
-                            delay: Math.random() * 0.3, // Stagger for cascading effect
+                            delay: Math.random() * 0.3,
                         } : {
-                            // Normal loop transition (works for both entrance and continuous loop)
-                            duration: justLeftArticle ? 1.5 : el.duration,
+                            // Normal loop transition with dynamic duration for entrance
+                            duration: returning ? 1.5 : el.duration,
                             repeat: Infinity,
-                            delay: justLeftArticle ? Math.random() * 0.3 : el.delay,
-                            ease: justLeftArticle ? "easeOut" : "easeInOut",
+                            delay: returning ? Math.random() * 0.3 : el.delay,
+                            ease: returning ? "easeOut" : "easeInOut",
                         }}
                         style={{
                             position: 'absolute',
