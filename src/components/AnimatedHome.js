@@ -37,7 +37,7 @@ export default function AnimatedHome({ latestPosts }) {
                     <span style={{ color: 'var(--text-muted)' }}>building scalable systems.</span>
                 </h1>
                 <p style={{ fontSize: '1.25rem', marginTop: '1.5rem', maxWidth: '600px', color: 'var(--text-main)' }}>
-                    I'm Irfan, a backend engineer based in Indonesia.
+                    I'm Irfan Ripat, a backend engineer based in Indonesia.
                     I specialize in building high-performance distributed systems with Golang,
                     designing robust APIs, and optimizing backend infrastructure at scale.
                 </p>
