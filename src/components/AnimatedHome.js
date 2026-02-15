@@ -104,6 +104,32 @@ export default function AnimatedHome({ latestPosts }) {
                         </div>
                     </motion.div>
 
+                    {/* Resume Button */}
+                    <motion.a
+                        href="/portfolio.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        variants={itemVariants}
+                        whileHover={{ scale: 1.02 }}
+                        style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '0.5rem',
+                            padding: '1rem 2rem',
+                            background: 'var(--card-bg)',
+                            border: '1px solid var(--border-color)',
+                            borderRadius: '8px',
+                            fontSize: '1rem',
+                            fontWeight: 600,
+                            color: 'var(--text-main)',
+                            textDecoration: 'none',
+                            transition: 'all 0.2s ease',
+                            marginTop: '1rem'
+                        }}
+                    >
+                        View Full Résumé ↗
+                    </motion.a>
+
                 </div>
             </motion.div>
 
