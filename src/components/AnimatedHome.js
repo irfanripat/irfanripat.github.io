@@ -49,7 +49,7 @@ export default function AnimatedHome({ latestPosts }) {
             </motion.header>
 
             <motion.div variants={itemVariants} className="section">
-                <h2 className="label">Where I've Built</h2>
+                <h2 className="label">Work Experience</h2>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem', marginTop: '2rem' }}>
 
                     {/* TIX ID */}
@@ -127,7 +127,7 @@ export default function AnimatedHome({ latestPosts }) {
             </motion.div>
 
             <motion.div variants={itemVariants} className="section">
-                <h2 className="label">Thoughts & Writing</h2>
+                <h2 className="label">Writing</h2>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', marginTop: '1.5rem' }}>
                     {latestPosts.map(({ id, date, title, description }) => (
                         <motion.article
