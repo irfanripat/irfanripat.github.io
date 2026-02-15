@@ -107,7 +107,7 @@ export default function AnimatedHome({ latestPosts }) {
 
                     {/* Resume Button */}
                     <motion.a
-                        href="/portfolio.pdf"
+                        href="/cv_irfan_ripat.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
                         variants={itemVariants}
