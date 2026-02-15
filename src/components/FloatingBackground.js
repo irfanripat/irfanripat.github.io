@@ -32,7 +32,7 @@ export default function FloatingBackground() {
         const wasOnArticlePage = prevPathnameRef.current?.startsWith('/blog/') && prevPathnameRef.current !== '/blog';
         if (wasOnArticlePage && !isArticlePage) {
             setReturning(true);
-            const timer = setTimeout(() => setReturning(false), 2000); // Match or slightly exceed transition duration
+            const timer = setTimeout(() => setReturning(false), 2000);
             return () => clearTimeout(timer);
         }
         prevPathnameRef.current = pathname;
@@ -54,28 +54,6 @@ export default function FloatingBackground() {
         setElements(newElements);
     }, []);
 
-    // Calculate nearest edge and exit position for each element
-    const getExitPosition = (el) => {
-        const distances = {
-            top: el.y,
-            bottom: 100 - el.y,
-            left: el.x,
-            right: 100 - el.x
-        };
-
-        const nearest = Object.keys(distances).reduce((a, b) =>
-            distances[a] < distances[b] ? a : b
-        );
-
-        switch (nearest) {
-            case 'top': return { x: `${el.x}vw`, y: '-10vh' };
-            case 'bottom': return { x: `${el.x}vw`, y: '110vh' };
-            case 'left': return { x: '-10vw', y: `${el.y}vh` };
-            case 'right': return { x: '110vw', y: `${el.y}vh` };
-            default: return { x: `${el.x}vw`, y: '-10vh' };
-        }
-    };
-
     if (!mounted) return null;
 
     return (
@@ -94,38 +72,34 @@ export default function FloatingBackground() {
         >
             {elements.map((el) => {
                 const Icon = el.Icon;
-                const exitPos = getExitPosition(el);
 
                 return (
                     <motion.div
-                        key={el.id} // Stable key prevents snapping
+                        key={el.id}
                         initial={{
                             x: `${el.x}vw`,
                             y: `${el.y}vh`,
                             opacity: 0
                         }}
-                        animate={isArticlePage ? {
-                            // Exit animation: move to nearest edge and fade out
-                            x: exitPos.x,
-                            y: exitPos.y,
-                            opacity: 0
-                        } : {
-                            // Normal floating animation or entrance from edge
+                        animate={{
+                            // Continuous floating animation
                             x: [`${el.x}vw`, `${(el.x + 15) % 100}vw`, `${el.x}vw`],
                             y: [`${el.y}vh`, `${(el.y + 20) % 100}vh`, `${el.y}vh`],
-                            opacity: [el.opacity, el.opacity * 2.5, el.opacity],
+                            // Fade based on page state
+                            opacity: isArticlePage ? 0 : [el.opacity, el.opacity * 2.5, el.opacity],
                         }}
-                        transition={isArticlePage ? {
-                            // Smooth exit transition
-                            duration: 1.5,
-                            ease: "easeInOut",
-                            delay: Math.random() * 0.3,
-                        } : {
-                            // Normal loop transition with dynamic duration for entrance
-                            duration: returning ? 1.5 : el.duration,
+                        transition={{
+                            duration: el.duration,
                             repeat: Infinity,
-                            delay: returning ? Math.random() * 0.3 : el.delay,
-                            ease: returning ? "easeOut" : "easeInOut",
+                            delay: el.delay,
+                            ease: "easeInOut",
+                            // Property-specific transition for opacity to make it respond faster to route changes
+                            opacity: {
+                                duration: returning || isArticlePage ? 1.5 : el.duration,
+                                repeat: isArticlePage ? 0 : Infinity,
+                                delay: (returning || isArticlePage) ? Math.random() * 0.3 : el.delay,
+                                ease: "easeInOut"
+                            }
                         }}
                         style={{
                             position: 'absolute',
