@@ -95,7 +95,7 @@ export default function FloatingBackground() {
 
                 return (
                     <motion.div
-                        key={el.id}
+                        key={`${el.id}-${isArticlePage ? 'article' : 'list'}`}
                         initial={justLeftArticle ? {
                             // Start from edge when returning from article
                             x: exitPos.x,
@@ -123,17 +123,12 @@ export default function FloatingBackground() {
                             duration: 1.5,
                             ease: "easeInOut",
                             delay: Math.random() * 0.3, // Stagger for cascading effect
-                        } : justLeftArticle ? {
-                            // Entrance animation from edge
-                            duration: 1.5,
-                            ease: "easeOut",
-                            delay: Math.random() * 0.3,
                         } : {
-                            // Normal loop transition
-                            duration: el.duration,
+                            // Normal loop transition (works for both entrance and continuous loop)
+                            duration: justLeftArticle ? 1.5 : el.duration,
                             repeat: Infinity,
-                            delay: el.delay,
-                            ease: "easeInOut",
+                            delay: justLeftArticle ? Math.random() * 0.3 : el.delay,
+                            ease: justLeftArticle ? "easeOut" : "easeInOut",
                         }}
                         style={{
                             position: 'absolute',
