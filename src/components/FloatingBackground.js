@@ -23,6 +23,7 @@ export default function FloatingBackground() {
     const [elements, setElements] = useState([]);
     const [tilt, setTilt] = useState({ x: 0, y: 0 });
     const [debug, setDebug] = useState(""); // Tiny debug overlay
+    const [sensorData, setSensorData] = useState({ b: 0, g: 0, count: 0 });
     const prevPathnameRef = useRef(pathname);
 
     // Detect if we're on an article page
@@ -48,6 +49,11 @@ export default function FloatingBackground() {
             const x = (e.gamma || 0) / 45;
             const y = (e.beta || 0) / 45;
             setTilt({ x, y });
+            setSensorData(prev => ({
+                b: e.beta || 0,
+                g: e.gamma || 0,
+                count: prev.count + 1
+            }));
         };
 
         const initTilt = () => {
