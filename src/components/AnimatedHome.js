@@ -106,23 +106,14 @@ export default function AnimatedHome({ latestPosts }) {
                     </motion.div>
 
                     {/* Resume Link */}
-                    <motion.a
-                        href="/cv_irfan_ripat.pdf"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        variants={itemVariants}
-                        style={{
-                            display: 'inline-block',
-                            fontWeight: 600,
-                            fontSize: '0.9rem',
-                            marginTop: '1.5rem',
-                            textDecoration: 'underline',
-                            color: 'inherit',
-                            transition: 'opacity 0.2s ease'
-                        }}
-                    >
-                        View Full Résumé &rarr;
-                    </motion.a>
+                    <a href="/cv_irfan_ripat.pdf" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                        <motion.span
+                            variants={itemVariants}
+                            style={{ display: 'inline-block', fontWeight: 600, fontSize: '0.9rem', marginTop: '1.5rem', textDecoration: 'underline', color: 'inherit', transition: 'opacity 0.2s ease' }}
+                        >
+                            View Full Résumé &rarr;
+                        </motion.span>
+                    </a>
 
                 </div>
             </motion.div>
