@@ -21,38 +21,66 @@ export default function FloatingBackground() {
     const pathname = usePathname();
     const [mounted, setMounted] = useState(false);
     const [elements, setElements] = useState([]);
-    const [returning, setReturning] = useState(false);
+    const [tilt, setTilt] = useState({ x: 0, y: 0 });
     const prevPathnameRef = useRef(pathname);
 
     // Detect if we're on an article page
     const isArticlePage = pathname?.startsWith('/blog/') && pathname !== '/blog';
 
-    // Detect if we just left an article page
-    useEffect(() => {
-        const wasOnArticlePage = prevPathnameRef.current?.startsWith('/blog/') && prevPathnameRef.current !== '/blog';
-        if (wasOnArticlePage && !isArticlePage) {
-            setReturning(true);
-            const timer = setTimeout(() => setReturning(false), 2000);
-            return () => clearTimeout(timer);
-        }
-        prevPathnameRef.current = pathname;
-    }, [pathname, isArticlePage]);
-
     useEffect(() => {
         setMounted(true);
-        // Generate 30 random elements for a denser feel
+        // Generate 30 random elements
         const newElements = Array.from({ length: 30 }).map((_, i) => ({
             id: i,
             Icon: techIcons[i % techIcons.length],
             x: Math.random() * 100,
             y: Math.random() * 100,
-            duration: 25 + Math.random() * 35, // Slower motion for elegance
-            delay: Math.random() * -35,
+            // Base drift speed
+            vx: (Math.random() - 0.5) * 0.05,
+            vy: 0.1 + Math.random() * 0.1,
             size: 1.5 + Math.random() * 2,
             opacity: 0.05 + Math.random() * 0.1,
         }));
         setElements(newElements);
+
+        // Tilt handler
+        const handleOrientation = (e) => {
+            // beta is front/back tilt (-180 to 180)
+            // gamma is left/right tilt (-90 to 90)
+            const x = (e.gamma || 0) / 45; // Normalize to approx -2 to 2
+            const y = (e.beta || 0) / 45;
+            setTilt({ x, y });
+        };
+
+        window.addEventListener("deviceorientation", handleOrientation);
+        return () => window.removeEventListener("deviceorientation", handleOrientation);
     }, []);
+
+    // Animation loop for gravity and wrapping
+    useEffect(() => {
+        if (!mounted || elements.length === 0) return;
+
+        let frameId;
+        const move = () => {
+            setElements(prev => prev.map(el => {
+                // Calculate new position with tilt influence
+                let nextX = el.x + el.vx + (tilt.x * 0.05);
+                let nextY = el.y + el.vy + (tilt.y * 0.05);
+
+                // Screen wrapping logic (0-100 range)
+                if (nextX > 105) nextX = -5;
+                if (nextX < -5) nextX = 105;
+                if (nextY > 105) nextY = -5;
+                if (nextY < -5) nextY = 105;
+
+                return { ...el, x: nextX, y: nextY };
+            }));
+            frameId = requestAnimationFrame(move);
+        };
+
+        frameId = requestAnimationFrame(move);
+        return () => cancelAnimationFrame(frameId);
+    }, [mounted, elements.length, tilt]);
 
     if (!mounted) return null;
 
@@ -76,35 +104,23 @@ export default function FloatingBackground() {
                 return (
                     <motion.div
                         key={el.id}
-                        initial={{
-                            x: `${el.x}vw`,
-                            y: `${el.y}vh`,
-                            opacity: 0
-                        }}
+                        initial={false}
                         animate={{
-                            // Continuous floating animation
-                            x: [`${el.x}vw`, `${(el.x + 15) % 100}vw`, `${el.x}vw`],
-                            y: [`${el.y}vh`, `${(el.y + 20) % 100}vh`, `${el.y}vh`],
-                            // Fade based on page state
-                            opacity: isArticlePage ? 0 : [el.opacity, el.opacity * 2.5, el.opacity],
+                            left: `${el.x}vw`,
+                            top: `${el.y}vh`,
+                            opacity: isArticlePage ? 0 : el.opacity,
                         }}
                         transition={{
-                            duration: el.duration,
-                            repeat: Infinity,
-                            delay: el.delay,
-                            ease: "easeInOut",
-                            // Property-specific transition for opacity to make it respond faster to route changes
-                            opacity: {
-                                duration: returning || isArticlePage ? 1.5 : el.duration,
-                                repeat: isArticlePage ? 0 : Infinity,
-                                delay: (returning || isArticlePage) ? Math.random() * 0.3 : el.delay,
-                                ease: "easeInOut"
-                            }
+                            // Smoother positional updates
+                            left: { type: "spring", stiffness: 50, damping: 20, mass: 1 },
+                            top: { type: "spring", stiffness: 50, damping: 20, mass: 1 },
+                            opacity: { duration: 1.5, ease: "easeInOut" }
                         }}
                         style={{
                             position: 'absolute',
                             color: 'var(--text-muted)',
                             filter: 'grayscale(100%) brightness(0.8)',
+                            transform: 'translate(-50%, -50%)',
                         }}
                     >
                         <Icon size={`${el.size}rem`} />
