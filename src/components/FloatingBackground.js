@@ -76,13 +76,19 @@ export default function FloatingBackground() {
                 let nextX = el.x + el.vx + (tilt.x * 0.5);
                 let nextY = el.y + el.vy + (tilt.y * 0.5);
 
+                // Calculate visibility based on position (fade near edges)
+                let wrapOpacity = el.opacity;
+                if (nextY > 100 || nextY < 0) {
+                    wrapOpacity = 0; // Invisible during wrap
+                }
+
                 // Screen wrapping logic (0-100 range)
                 if (nextX > 105) nextX = -5;
                 if (nextX < -5) nextX = 105;
                 if (nextY > 105) nextY = -5;
                 if (nextY < -5) nextY = 105;
 
-                return { ...el, x: nextX, y: nextY };
+                return { ...el, x: nextX, y: nextY, wrapOpacity };
             }));
             frameId = requestAnimationFrame(move);
         };
@@ -117,7 +123,7 @@ export default function FloatingBackground() {
                         animate={{
                             left: `${el.x}vw`,
                             top: `${el.y}vh`,
-                            opacity: isArticlePage ? 0 : el.opacity,
+                            opacity: isArticlePage ? 0 : (el.wrapOpacity ?? el.opacity),
                         }}
                         transition={{
                             opacity: { duration: 1.5, ease: "easeInOut" }
