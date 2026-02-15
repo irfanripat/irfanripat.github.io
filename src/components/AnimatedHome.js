@@ -49,29 +49,58 @@ export default function AnimatedHome({ latestPosts }) {
             </motion.header>
 
             <motion.div variants={itemVariants} className="section">
-                <h2 className="label">Tech Stack</h2>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginTop: '2rem' }}>
+                <h2 className="label">Work Experience</h2>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem', marginTop: '2rem' }}>
+
+                    {/* Grab */}
                     <motion.div
-                        whileHover={{ y: -5, scale: 1.02 }}
-                        className="card"
+                        variants={itemVariants}
+                        style={{ display: 'grid', gridTemplateColumns: '140px 1fr', gap: '2rem', alignItems: 'start' }}
                     >
-                        <span className="label">Languages</span>
-                        <p style={{ color: 'var(--text-main)', marginTop: '0.5rem' }}>Go • Kotlin • Python • TypeScript</p>
+                        <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 600, paddingTop: '0.25rem' }}>
+                            2026 — PRESENT
+                        </span>
+                        <div>
+                            <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                Backend Engineer • Grab
+                                <a href="https://www.grab.com" target="_blank" style={{ fontSize: '1rem', opacity: 0.6 }}>↗</a>
+                            </h3>
+                            <p style={{ color: 'var(--text-muted)', marginBottom: '1rem', lineHeight: '1.6' }}>
+                                Building and optimizing backend services for the Driver Earning team, focusing on scalable payment processing and driver compensation systems.
+                            </p>
+                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>Go</span>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>PostgreSQL</span>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>Redis</span>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>Kubernetes</span>
+                            </div>
+                        </div>
                     </motion.div>
+
+                    {/* TIX ID */}
                     <motion.div
-                        whileHover={{ y: -5, scale: 1.02 }}
-                        className="card"
+                        variants={itemVariants}
+                        style={{ display: 'grid', gridTemplateColumns: '140px 1fr', gap: '2rem', alignItems: 'start' }}
                     >
-                        <span className="label">Databases</span>
-                        <p style={{ color: 'var(--text-main)', marginTop: '0.5rem' }}>PostgreSQL • Redis • SQLite</p>
+                        <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 600, paddingTop: '0.25rem' }}>
+                            2024 — 2025
+                        </span>
+                        <div>
+                            <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                Backend Engineer • TIX ID
+                                <a href="https://www.tix.id" target="_blank" style={{ fontSize: '1rem', opacity: 0.6 }}>↗</a>
+                            </h3>
+                            <p style={{ color: 'var(--text-muted)', marginBottom: '1rem', lineHeight: '1.6' }}>
+                                Developed and maintained backend services for Indonesia's leading movie ticketing platform, handling high-traffic booking systems and payment integrations.
+                            </p>
+                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>Go</span>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>PostgreSQL</span>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>Docker</span>
+                            </div>
+                        </div>
                     </motion.div>
-                    <motion.div
-                        whileHover={{ y: -5, scale: 1.02 }}
-                        className="card"
-                    >
-                        <span className="label">Infrastructure</span>
-                        <p style={{ color: 'var(--text-main)', marginTop: '0.5rem' }}>Docker • Kubernetes • Git</p>
-                    </motion.div>
+
                 </div>
             </motion.div>
 
