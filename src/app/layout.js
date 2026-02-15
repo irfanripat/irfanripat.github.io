@@ -6,7 +6,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 
 export const metadata = {
   title: "Irfan Ripat | Software Engineer",
-  description: "Irfan Ripat is a Software Engineer based in Indonesia, exploring backend and mobile development.",
+  description: "Irfan Ripat is a Backend Engineer based in Indonesia, specializing in building scalable distributed systems with Golang.",
 };
 
 export default function RootLayout({ children }) {
