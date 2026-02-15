@@ -73,7 +73,6 @@ export default function AnimatedHome({ latestPosts }) {
                                 <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>PostgreSQL</span>
                                 <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>Redis</span>
                                 <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>RabbitMQ</span>
-                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>Kafka</span>
                                 <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>Docker</span>
                             </div>
                         </div>
@@ -98,7 +97,9 @@ export default function AnimatedHome({ latestPosts }) {
                             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
                                 <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>Go</span>
                                 <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>PostgreSQL</span>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>MongoDB</span>
                                 <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>Redis</span>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>Kafka</span>
                                 <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>Docker</span>
                             </div>
                         </div>
