@@ -69,11 +69,11 @@ export default function AnimatedHome({ latestPosts }) {
                                 Built and maintained scalable backend services for movie and food ordering platforms. Refactored legacy systems, designed HLD documents, and enhanced deployment efficiency across multi-team codebases.
                             </p>
                             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', color: 'var(--text-main)', borderRadius: '12px' }}>Go</span>
-                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', color: 'var(--text-main)', borderRadius: '12px' }}>PostgreSQL</span>
-                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', color: 'var(--text-main)', borderRadius: '12px' }}>Redis</span>
-                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', color: 'var(--text-main)', borderRadius: '12px' }}>RabbitMQ</span>
-                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', color: 'var(--text-main)', borderRadius: '12px' }}>Docker</span>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', color: 'var(--text-main)', borderRadius: '4px' }}>Go</span>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', color: 'var(--text-main)', borderRadius: '4px' }}>PostgreSQL</span>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', color: 'var(--text-main)', borderRadius: '4px' }}>Redis</span>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', color: 'var(--text-main)', borderRadius: '4px' }}>RabbitMQ</span>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', color: 'var(--text-main)', borderRadius: '4px' }}>Docker</span>
                             </div>
                         </div>
                     </motion.div>
@@ -95,12 +95,12 @@ export default function AnimatedHome({ latestPosts }) {
                                 Developed and optimized backend services for logistics operations. Applied TDD practices, improved API performance, and contributed to scaling large backend systems while enhancing maintainability.
                             </p>
                             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', color: 'var(--text-main)', borderRadius: '12px' }}>Go</span>
-                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', color: 'var(--text-main)', borderRadius: '12px' }}>PostgreSQL</span>
-                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', color: 'var(--text-main)', borderRadius: '12px' }}>MongoDB</span>
-                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', color: 'var(--text-main)', borderRadius: '12px' }}>Redis</span>
-                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', color: 'var(--text-main)', borderRadius: '12px' }}>Kafka</span>
-                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', color: 'var(--text-main)', borderRadius: '12px' }}>Docker</span>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', color: 'var(--text-main)', borderRadius: '4px' }}>Go</span>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', color: 'var(--text-main)', borderRadius: '4px' }}>PostgreSQL</span>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', color: 'var(--text-main)', borderRadius: '4px' }}>MongoDB</span>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', color: 'var(--text-main)', borderRadius: '4px' }}>Redis</span>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', color: 'var(--text-main)', borderRadius: '4px' }}>Kafka</span>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', color: 'var(--text-main)', borderRadius: '4px' }}>Docker</span>
                             </div>
                         </div>
                     </motion.div>
