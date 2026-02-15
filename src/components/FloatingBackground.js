@@ -120,8 +120,6 @@ export default function FloatingBackground() {
                             opacity: isArticlePage ? 0 : el.opacity,
                         }}
                         transition={{
-                            left: { duration: 0.1, ease: "linear" },
-                            top: { duration: 0.1, ease: "linear" },
                             opacity: { duration: 1.5, ease: "easeInOut" }
                         }}
                         style={{
