@@ -50,39 +50,45 @@ export default function FloatingBackground() {
         };
 
         const initTilt = () => {
+            console.log("FloatingBackground: Initializing orientation listener");
             window.addEventListener("deviceorientation", handleOrientation);
         };
 
-        // iOS 13+ requires explicit permission via user gesture
-        if (typeof DeviceOrientationEvent !== 'undefined' &&
-            typeof DeviceOrientationEvent.requestPermission === 'function') {
+        const requestPermission = async () => {
+            console.log("FloatingBackground: Requesting permission...");
+            try {
+                if (typeof window.DeviceOrientationEvent !== 'undefined' &&
+                    typeof window.DeviceOrientationEvent.requestPermission === 'function') {
 
-            const handleFirstInteraction = () => {
-                DeviceOrientationEvent.requestPermission()
-                    .then(response => {
-                        if (response === 'granted') {
-                            initTilt();
-                        }
-                    })
-                    .catch(console.error);
+                    const response = await window.DeviceOrientationEvent.requestPermission();
+                    console.log("FloatingBackground: Permission response:", response);
+                    if (response === 'granted') {
+                        initTilt();
+                    }
+                } else {
+                    console.log("FloatingBackground: Permission API not found, assuming non-iOS");
+                    initTilt();
+                }
+            } catch (err) {
+                console.error("FloatingBackground: Permission error:", err);
+                initTilt();
+            }
+        };
 
-                window.removeEventListener('click', handleFirstInteraction);
-                window.removeEventListener('touchstart', handleFirstInteraction);
-            };
+        // Attach to multiple events to ensure any interaction triggers it
+        const events = ['click', 'touchstart', 'mousedown'];
+        const trigger = () => {
+            console.log("FloatingBackground: User interaction detected");
+            requestPermission();
+            events.forEach(e => window.removeEventListener(e, trigger));
+        };
 
-            window.addEventListener('click', handleFirstInteraction);
-            window.addEventListener('touchstart', handleFirstInteraction);
+        events.forEach(e => window.addEventListener(e, trigger));
 
-            return () => {
-                window.removeEventListener('click', handleFirstInteraction);
-                window.removeEventListener('touchstart', handleFirstInteraction);
-                window.removeEventListener("deviceorientation", handleOrientation);
-            };
-        } else {
-            // Android or non-iOS environments
-            initTilt();
-            return () => window.removeEventListener("deviceorientation", handleOrientation);
-        }
+        return () => {
+            events.forEach(e => window.removeEventListener(e, trigger));
+            window.removeEventListener("deviceorientation", handleOrientation);
+        };
     }, []);
 
     // Animation loop for gravity and wrapping
