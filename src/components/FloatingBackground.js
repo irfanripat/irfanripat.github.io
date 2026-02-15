@@ -102,9 +102,9 @@ export default function FloatingBackground() {
         let frameId;
         const move = () => {
             setElements(prev => prev.map(el => {
-                // Calculate new position with tilt influence (increased sensitivity)
-                let nextX = el.x + el.vx + (tilt.x * 0.15);
-                let nextY = el.y + el.vy + (tilt.y * 0.15);
+                // Calculate new position with tilt influence (high sensitivity)
+                let nextX = el.x + el.vx + (tilt.x * 0.5);
+                let nextY = el.y + el.vy + (tilt.y * 0.5);
 
                 // Screen wrapping logic (0-100 range)
                 if (nextX > 105) nextX = -5;
@@ -151,9 +151,9 @@ export default function FloatingBackground() {
                                 opacity: isArticlePage ? 0 : el.opacity,
                             }}
                             transition={{
-                                // Smoother positional updates
-                                left: { type: "spring", stiffness: 50, damping: 20, mass: 1 },
-                                top: { type: "spring", stiffness: 50, damping: 20, mass: 1 },
+                                // Use a very short linear transition for smooth movement without bounce on wrap
+                                left: { duration: 0.1, ease: "linear" },
+                                top: { duration: 0.1, ease: "linear" },
                                 opacity: { duration: 1.5, ease: "easeInOut" }
                             }}
                             style={{
