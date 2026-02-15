@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
           <FloatingBackground />
           <div className="container" style={{ position: 'relative', zIndex: 1 }}>
             <nav className="nav">
-              <Link href="/" style={{ fontWeight: 700, fontSize: '1.2rem' }}>irfan.</Link>
+              <Link href="/" style={{ fontWeight: 700, fontSize: '1.2rem' }}>Irfan Ripat</Link>
               <div className="nav-links" style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
                 <Link href="/blog">Blog</Link>
                 <ThemeToggle />
