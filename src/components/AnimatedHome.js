@@ -52,32 +52,6 @@ export default function AnimatedHome({ latestPosts }) {
                 <h2 className="label">Work Experience</h2>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem', marginTop: '2rem' }}>
 
-                    {/* Grab */}
-                    <motion.div
-                        variants={itemVariants}
-                        style={{ display: 'grid', gridTemplateColumns: '140px 1fr', gap: '2rem', alignItems: 'start' }}
-                    >
-                        <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 600, paddingTop: '0.25rem' }}>
-                            2026 — PRESENT
-                        </span>
-                        <div>
-                            <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                Backend Engineer • Grab
-                                <a href="https://www.grab.com" target="_blank" style={{ fontSize: '1rem', opacity: 0.6 }}>↗</a>
-                            </h3>
-                            <p style={{ color: 'var(--text-muted)', marginBottom: '1rem', lineHeight: '1.6' }}>
-                                Building scalable backend services for the Driver Earning team, optimizing payment processing and compensation systems for millions of drivers across Southeast Asia.
-                            </p>
-                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>Go</span>
-                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>PostgreSQL</span>
-                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>Redis</span>
-                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>Kafka</span>
-                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>Kubernetes</span>
-                            </div>
-                        </div>
-                    </motion.div>
-
                     {/* TIX ID */}
                     <motion.div
                         variants={itemVariants}
