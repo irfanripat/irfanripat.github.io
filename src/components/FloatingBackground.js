@@ -177,21 +177,18 @@ export default function FloatingBackground() {
                     right: '10px',
                     fontSize: '10px',
                     color: 'var(--text-muted)',
-                    opacity: 0.8,
+                    opacity: 0.9,
                     zIndex: 1000,
                     pointerEvents: 'none',
-                    background: 'rgba(0,0,0,0.2)',
+                    background: 'rgba(0,0,0,0.3)',
                     padding: '4px 8px',
                     borderRadius: '4px',
                     fontFamily: 'monospace',
                     textAlign: 'right'
                 }}>
                     <div>{debug}</div>
-                    {tilt.x !== 0 || tilt.y !== 0 ? (
-                        <div>
-                            X: {tilt.x.toFixed(2)} | Y: {tilt.y.toFixed(2)}
-                        </div>
-                    ) : null}
+                    <div>Beta: {sensorData.b.toFixed(1)} | Gamma: {sensorData.g.toFixed(1)}</div>
+                    <div>Hits: {sensorData.count}</div>
                 </div>
             )}
         </>
