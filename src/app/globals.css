@@ -120,6 +120,21 @@ h4 {
   margin-bottom: 0.5rem;
 }
 
+/* Work Experience Responsive Layout */
+.work-experience-item {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (max-width: 640px) {
+  .work-experience-item {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}
+
 /* Article Typography */
 .article-content {
   font-size: 1.125rem;

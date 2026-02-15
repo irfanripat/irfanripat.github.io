@@ -55,7 +55,7 @@ export default function AnimatedHome({ latestPosts }) {
                     {/* TIX ID */}
                     <motion.div
                         variants={itemVariants}
-                        style={{ display: 'grid', gridTemplateColumns: '140px 1fr', gap: '2rem', alignItems: 'start' }}
+                        className="work-experience-item"
                     >
                         <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 600, paddingTop: '0.25rem' }}>
                             2024 — 2025
@@ -81,7 +81,7 @@ export default function AnimatedHome({ latestPosts }) {
                     {/* Waresix */}
                     <motion.div
                         variants={itemVariants}
-                        style={{ display: 'grid', gridTemplateColumns: '140px 1fr', gap: '2rem', alignItems: 'start' }}
+                        className="work-experience-item"
                     >
                         <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 600, paddingTop: '0.25rem' }}>
                             2022 — 2024
