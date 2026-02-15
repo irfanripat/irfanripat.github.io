@@ -49,23 +49,28 @@ export default function AnimatedHome({ latestPosts }) {
             </motion.header>
 
             <motion.div variants={itemVariants} className="section">
-                <h2 className="label">Featured Projects</h2>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginTop: '2rem' }}>
+                <h2 className="label">Tech Stack</h2>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginTop: '2rem' }}>
                     <motion.div
                         whileHover={{ y: -5, scale: 1.02 }}
                         className="card"
                     >
-                        <span className="label">Android</span>
-                        <h3>Native Mobile Explorer</h3>
-                        <p style={{ color: 'var(--text-muted)' }}>Building captivating Android applications with Kotlin.</p>
+                        <span className="label">Languages</span>
+                        <p style={{ color: 'var(--text-main)', marginTop: '0.5rem' }}>Go • Kotlin • Python • TypeScript</p>
                     </motion.div>
                     <motion.div
                         whileHover={{ y: -5, scale: 1.02 }}
                         className="card"
                     >
-                        <span className="label">Backend</span>
-                        <h3>Service Weaver</h3>
-                        <p style={{ color: 'var(--text-muted)' }}>Optimizing core processes with Golang at scale.</p>
+                        <span className="label">Databases</span>
+                        <p style={{ color: 'var(--text-main)', marginTop: '0.5rem' }}>PostgreSQL • Redis • SQLite</p>
+                    </motion.div>
+                    <motion.div
+                        whileHover={{ y: -5, scale: 1.02 }}
+                        className="card"
+                    >
+                        <span className="label">Infrastructure</span>
+                        <p style={{ color: 'var(--text-main)', marginTop: '0.5rem' }}>Docker • Kubernetes • Git</p>
                     </motion.div>
                 </div>
             </motion.div>
