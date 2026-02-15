@@ -105,30 +105,22 @@ export default function AnimatedHome({ latestPosts }) {
                         </div>
                     </motion.div>
 
-                    {/* Resume Button */}
+                    {/* Resume Link */}
                     <motion.a
                         href="/cv_irfan_ripat.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
                         variants={itemVariants}
-                        whileHover={{ scale: 1.02 }}
                         style={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: '0.5rem',
-                            padding: '1rem 2rem',
-                            background: 'var(--card-bg)',
-                            border: '1px solid var(--border-color)',
-                            borderRadius: '8px',
-                            fontSize: '1rem',
+                            display: 'inline-block',
                             fontWeight: 600,
-                            color: 'var(--text-main)',
-                            textDecoration: 'none',
-                            transition: 'all 0.2s ease',
-                            marginTop: '1rem'
+                            fontSize: '0.9rem',
+                            marginTop: '2rem',
+                            textDecoration: 'underline',
+                            color: 'inherit'
                         }}
                     >
-                        View Full Résumé ↗
+                        View Full Résumé &rarr;
                     </motion.a>
 
                 </div>
