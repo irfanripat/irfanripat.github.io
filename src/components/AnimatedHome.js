@@ -33,12 +33,13 @@ export default function AnimatedHome({ latestPosts }) {
         >
             <motion.header variants={itemVariants} style={{ marginBottom: '4rem' }}>
                 <h1 style={{ fontSize: '3.5rem', lineHeight: '1.1' }}>
-                    Software Engineer <br />
-                    <span style={{ color: 'var(--text-muted)' }}>exploring backend & mobile.</span>
+                    Backend Engineer <br />
+                    <span style={{ color: 'var(--text-muted)' }}>building scalable systems.</span>
                 </h1>
                 <p style={{ fontSize: '1.25rem', marginTop: '1.5rem', maxWidth: '600px', color: 'var(--text-main)' }}>
-                    I'm Irfan, a creator of digital solutions based in Indonesia.
-                    Building scalable services with Golang and crafting seamless experiences on Android.
+                    I'm Irfan, a backend engineer based in Indonesia.
+                    I specialize in building high-performance distributed systems with Golang,
+                    designing robust APIs, and optimizing backend infrastructure at scale.
                 </p>
                 <div style={{ display: 'flex', gap: '1.5rem', marginTop: '1.5rem', fontWeight: 600, fontSize: '0.9rem' }}>
                     <a href="https://github.com/irfanripat" target="_blank">Github</a>
