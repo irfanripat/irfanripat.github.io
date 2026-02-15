@@ -84,16 +84,20 @@ export default function FloatingBackground() {
         const handleFirstInteraction = () => {
             setDebug("User tap detected...");
 
-            // iOS 13+ check
+            // iOS 13+ requires permission for BOTH orientation and motion
             if (typeof window.DeviceOrientationEvent !== 'undefined' &&
                 typeof window.DeviceOrientationEvent.requestPermission === 'function') {
 
-                setDebug("Requesting iOS permission...");
-                // CALL SYNCHRONOUSLY inside the event handler
-                window.DeviceOrientationEvent.requestPermission()
-                    .then(response => {
-                        setDebug(`Permission: ${response}`);
-                        if (response === 'granted') {
+                setDebug("Requesting iOS permissions...");
+
+                // Request BOTH permissions
+                Promise.all([
+                    window.DeviceOrientationEvent.requestPermission(),
+                    window.DeviceMotionEvent?.requestPermission?.() || Promise.resolve('granted')
+                ])
+                    .then(([orientationResp, motionResp]) => {
+                        setDebug(`Perm O:${orientationResp} M:${motionResp}`);
+                        if (orientationResp === 'granted' || motionResp === 'granted') {
                             initTilt();
                         }
                     })
