@@ -43,17 +43,46 @@ export default function FloatingBackground() {
         }));
         setElements(newElements);
 
-        // Tilt handler
         const handleOrientation = (e) => {
-            // beta is front/back tilt (-180 to 180)
-            // gamma is left/right tilt (-90 to 90)
-            const x = (e.gamma || 0) / 45; // Normalize to approx -2 to 2
+            const x = (e.gamma || 0) / 45;
             const y = (e.beta || 0) / 45;
             setTilt({ x, y });
         };
 
-        window.addEventListener("deviceorientation", handleOrientation);
-        return () => window.removeEventListener("deviceorientation", handleOrientation);
+        const initTilt = () => {
+            window.addEventListener("deviceorientation", handleOrientation);
+        };
+
+        // iOS 13+ requires explicit permission via user gesture
+        if (typeof DeviceOrientationEvent !== 'undefined' &&
+            typeof DeviceOrientationEvent.requestPermission === 'function') {
+
+            const handleFirstInteraction = () => {
+                DeviceOrientationEvent.requestPermission()
+                    .then(response => {
+                        if (response === 'granted') {
+                            initTilt();
+                        }
+                    })
+                    .catch(console.error);
+
+                window.removeEventListener('click', handleFirstInteraction);
+                window.removeEventListener('touchstart', handleFirstInteraction);
+            };
+
+            window.addEventListener('click', handleFirstInteraction);
+            window.addEventListener('touchstart', handleFirstInteraction);
+
+            return () => {
+                window.removeEventListener('click', handleFirstInteraction);
+                window.removeEventListener('touchstart', handleFirstInteraction);
+                window.removeEventListener("deviceorientation", handleOrientation);
+            };
+        } else {
+            // Android or non-iOS environments
+            initTilt();
+            return () => window.removeEventListener("deviceorientation", handleOrientation);
+        }
     }, []);
 
     // Animation loop for gravity and wrapping
