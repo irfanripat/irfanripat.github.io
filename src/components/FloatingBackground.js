@@ -22,6 +22,7 @@ export default function FloatingBackground() {
     const [mounted, setMounted] = useState(false);
     const [elements, setElements] = useState([]);
     const [tilt, setTilt] = useState({ x: 0, y: 0 });
+    const [debug, setDebug] = useState(""); // Tiny debug overlay
     const prevPathnameRef = useRef(pathname);
 
     // Detect if we're on an article page
@@ -50,43 +51,46 @@ export default function FloatingBackground() {
         };
 
         const initTilt = () => {
-            console.log("FloatingBackground: Initializing orientation listener");
+            setDebug("Initializing sensors...");
             window.addEventListener("deviceorientation", handleOrientation);
+            setDebug("Sensors active");
         };
 
-        const requestPermission = async () => {
-            console.log("FloatingBackground: Requesting permission...");
-            try {
-                if (typeof window.DeviceOrientationEvent !== 'undefined' &&
-                    typeof window.DeviceOrientationEvent.requestPermission === 'function') {
+        const handleFirstInteraction = () => {
+            setDebug("User tap detected...");
 
-                    const response = await window.DeviceOrientationEvent.requestPermission();
-                    console.log("FloatingBackground: Permission response:", response);
-                    if (response === 'granted') {
+            // iOS 13+ check
+            if (typeof window.DeviceOrientationEvent !== 'undefined' &&
+                typeof window.DeviceOrientationEvent.requestPermission === 'function') {
+
+                setDebug("Requesting iOS permission...");
+                // CALL SYNCHRONOUSLY inside the event handler
+                window.DeviceOrientationEvent.requestPermission()
+                    .then(response => {
+                        setDebug(`Permission: ${response}`);
+                        if (response === 'granted') {
+                            initTilt();
+                        }
+                    })
+                    .catch(err => {
+                        setDebug(`Error: ${err.message || 'unknown'}`);
                         initTilt();
-                    }
-                } else {
-                    console.log("FloatingBackground: Permission API not found, assuming non-iOS");
-                    initTilt();
-                }
-            } catch (err) {
-                console.error("FloatingBackground: Permission error:", err);
+                    });
+            } else {
+                setDebug("No permission required, starting...");
                 initTilt();
             }
+
+            // Cleanup triggers
+            events.forEach(e => window.removeEventListener(e, handleFirstInteraction));
         };
 
         // Attach to multiple events to ensure any interaction triggers it
         const events = ['click', 'touchstart', 'mousedown'];
-        const trigger = () => {
-            console.log("FloatingBackground: User interaction detected");
-            requestPermission();
-            events.forEach(e => window.removeEventListener(e, trigger));
-        };
-
-        events.forEach(e => window.addEventListener(e, trigger));
+        events.forEach(e => window.addEventListener(e, handleFirstInteraction));
 
         return () => {
-            events.forEach(e => window.removeEventListener(e, trigger));
+            events.forEach(e => window.removeEventListener(e, handleFirstInteraction));
             window.removeEventListener("deviceorientation", handleOrientation);
         };
     }, []);
@@ -120,48 +124,69 @@ export default function FloatingBackground() {
     if (!mounted) return null;
 
     return (
-        <div
-            style={{
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                zIndex: 0,
-                overflow: 'hidden',
-                pointerEvents: 'none',
-                opacity: 0.8,
-            }}
-        >
-            {elements.map((el) => {
-                const Icon = el.Icon;
+        <>
+            <div
+                style={{
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    zIndex: 0,
+                    overflow: 'hidden',
+                    pointerEvents: 'none',
+                    opacity: 0.8,
+                }}
+            >
+                {elements.map((el) => {
+                    const Icon = el.Icon;
 
-                return (
-                    <motion.div
-                        key={el.id}
-                        initial={false}
-                        animate={{
-                            left: `${el.x}vw`,
-                            top: `${el.y}vh`,
-                            opacity: isArticlePage ? 0 : el.opacity,
-                        }}
-                        transition={{
-                            // Smoother positional updates
-                            left: { type: "spring", stiffness: 50, damping: 20, mass: 1 },
-                            top: { type: "spring", stiffness: 50, damping: 20, mass: 1 },
-                            opacity: { duration: 1.5, ease: "easeInOut" }
-                        }}
-                        style={{
-                            position: 'absolute',
-                            color: 'var(--text-muted)',
-                            filter: 'grayscale(100%) brightness(0.8)',
-                            transform: 'translate(-50%, -50%)',
-                        }}
-                    >
-                        <Icon size={`${el.size}rem`} />
-                    </motion.div>
-                );
-            })}
-        </div>
+                    return (
+                        <motion.div
+                            key={el.id}
+                            initial={false}
+                            animate={{
+                                left: `${el.x}vw`,
+                                top: `${el.y}vh`,
+                                opacity: isArticlePage ? 0 : el.opacity,
+                            }}
+                            transition={{
+                                // Smoother positional updates
+                                left: { type: "spring", stiffness: 50, damping: 20, mass: 1 },
+                                top: { type: "spring", stiffness: 50, damping: 20, mass: 1 },
+                                opacity: { duration: 1.5, ease: "easeInOut" }
+                            }}
+                            style={{
+                                position: 'absolute',
+                                color: 'var(--text-muted)',
+                                filter: 'grayscale(100%) brightness(0.8)',
+                                transform: 'translate(-50%, -50%)',
+                            }}
+                        >
+                            <Icon size={`${el.size}rem`} />
+                        </motion.div>
+                    );
+                })}
+            </div>
+
+            {/* Subtle debug overlay for troubleshooting iOS sensors */}
+            {debug && (
+                <div style={{
+                    position: 'fixed',
+                    bottom: '10px',
+                    right: '10px',
+                    fontSize: '10px',
+                    color: 'var(--text-muted)',
+                    opacity: 0.5,
+                    zIndex: 1000,
+                    pointerEvents: 'none',
+                    background: 'rgba(0,0,0,0.1)',
+                    padding: '2px 5px',
+                    borderRadius: '4px'
+                }}>
+                    {debug}
+                </div>
+            )}
+        </>
     );
 }
