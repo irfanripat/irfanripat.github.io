@@ -56,10 +56,29 @@ export default function FloatingBackground() {
             }));
         };
 
+        // Fallback for devices that use DeviceMotionEvent instead
+        const handleMotion = (e) => {
+            if (e.rotationRate) {
+                const x = (e.rotationRate.beta || 0) / 10;
+                const y = (e.rotationRate.alpha || 0) / 10;
+                setTilt({ x, y });
+                setSensorData(prev => ({
+                    b: e.rotationRate.alpha || 0,
+                    g: e.rotationRate.beta || 0,
+                    count: prev.count + 1
+                }));
+            }
+        };
+
         const initTilt = () => {
             setDebug("Initializing sensors...");
+            // Try both - some iOS devices only support one
             window.addEventListener("deviceorientation", handleOrientation);
-            setDebug("Sensors active");
+            window.addEventListener("devicemotion", handleMotion);
+
+            const hasO = typeof DeviceOrientationEvent !== 'undefined';
+            const hasM = typeof DeviceMotionEvent !== 'undefined';
+            setDebug(`Active (O:${hasO} M:${hasM})`);
         };
 
         const handleFirstInteraction = () => {
@@ -98,6 +117,7 @@ export default function FloatingBackground() {
         return () => {
             events.forEach(e => window.removeEventListener(e, handleFirstInteraction));
             window.removeEventListener("deviceorientation", handleOrientation);
+            window.removeEventListener("devicemotion", handleMotion);
         };
     }, []);
 
