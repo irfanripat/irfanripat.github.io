@@ -49,7 +49,7 @@ export default function AnimatedHome({ latestPosts }) {
             </motion.header>
 
             <motion.div variants={itemVariants} className="section">
-                <h2 className="label">Work Experience</h2>
+                <h2 className="label">Where I've Built</h2>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem', marginTop: '2rem' }}>
 
                     {/* TIX ID */}
@@ -69,11 +69,11 @@ export default function AnimatedHome({ latestPosts }) {
                                 Built and maintained scalable backend services for movie and food ordering platforms. Refactored legacy systems, designed HLD documents, and enhanced deployment efficiency across multi-team codebases.
                             </p>
                             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>Go</span>
-                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>PostgreSQL</span>
-                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>Redis</span>
-                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>RabbitMQ</span>
-                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>Docker</span>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', color: 'var(--text-main)', borderRadius: '12px' }}>Go</span>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', color: 'var(--text-main)', borderRadius: '12px' }}>PostgreSQL</span>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', color: 'var(--text-main)', borderRadius: '12px' }}>Redis</span>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', color: 'var(--text-main)', borderRadius: '12px' }}>RabbitMQ</span>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', color: 'var(--text-main)', borderRadius: '12px' }}>Docker</span>
                             </div>
                         </div>
                     </motion.div>
@@ -95,12 +95,12 @@ export default function AnimatedHome({ latestPosts }) {
                                 Developed and optimized backend services for logistics operations. Applied TDD practices, improved API performance, and contributed to scaling large backend systems while enhancing maintainability.
                             </p>
                             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>Go</span>
-                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>PostgreSQL</span>
-                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>MongoDB</span>
-                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>Redis</span>
-                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>Kafka</span>
-                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>Docker</span>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', color: 'var(--text-main)', borderRadius: '12px' }}>Go</span>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', color: 'var(--text-main)', borderRadius: '12px' }}>PostgreSQL</span>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', color: 'var(--text-main)', borderRadius: '12px' }}>MongoDB</span>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', color: 'var(--text-main)', borderRadius: '12px' }}>Redis</span>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', color: 'var(--text-main)', borderRadius: '12px' }}>Kafka</span>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', color: 'var(--text-main)', borderRadius: '12px' }}>Docker</span>
                             </div>
                         </div>
                     </motion.div>
@@ -127,7 +127,7 @@ export default function AnimatedHome({ latestPosts }) {
             </motion.div>
 
             <motion.div variants={itemVariants} className="section">
-                <h2 className="label">Recent Writing</h2>
+                <h2 className="label">Thoughts & Writing</h2>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', marginTop: '1.5rem' }}>
                     {latestPosts.map(({ id, date, title, description }) => (
                         <motion.article
