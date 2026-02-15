@@ -102,9 +102,9 @@ export default function FloatingBackground() {
         let frameId;
         const move = () => {
             setElements(prev => prev.map(el => {
-                // Calculate new position with tilt influence
-                let nextX = el.x + el.vx + (tilt.x * 0.05);
-                let nextY = el.y + el.vy + (tilt.y * 0.05);
+                // Calculate new position with tilt influence (increased sensitivity)
+                let nextX = el.x + el.vx + (tilt.x * 0.15);
+                let nextY = el.y + el.vy + (tilt.y * 0.15);
 
                 // Screen wrapping logic (0-100 range)
                 if (nextX > 105) nextX = -5;
@@ -177,14 +177,21 @@ export default function FloatingBackground() {
                     right: '10px',
                     fontSize: '10px',
                     color: 'var(--text-muted)',
-                    opacity: 0.5,
+                    opacity: 0.8,
                     zIndex: 1000,
                     pointerEvents: 'none',
-                    background: 'rgba(0,0,0,0.1)',
-                    padding: '2px 5px',
-                    borderRadius: '4px'
+                    background: 'rgba(0,0,0,0.2)',
+                    padding: '4px 8px',
+                    borderRadius: '4px',
+                    fontFamily: 'monospace',
+                    textAlign: 'right'
                 }}>
-                    {debug}
+                    <div>{debug}</div>
+                    {tilt.x !== 0 || tilt.y !== 0 ? (
+                        <div>
+                            X: {tilt.x.toFixed(2)} | Y: {tilt.y.toFixed(2)}
+                        </div>
+                    ) : null}
                 </div>
             )}
         </>
