@@ -66,12 +66,13 @@ export default function AnimatedHome({ latestPosts }) {
                                 <a href="https://www.grab.com" target="_blank" style={{ fontSize: '1rem', opacity: 0.6 }}>↗</a>
                             </h3>
                             <p style={{ color: 'var(--text-muted)', marginBottom: '1rem', lineHeight: '1.6' }}>
-                                Building and optimizing backend services for the Driver Earning team, focusing on scalable payment processing and driver compensation systems.
+                                Building scalable backend services for the Driver Earning team, optimizing payment processing and compensation systems for millions of drivers across Southeast Asia.
                             </p>
                             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
                                 <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>Go</span>
                                 <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>PostgreSQL</span>
                                 <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>Redis</span>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>Kafka</span>
                                 <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>Kubernetes</span>
                             </div>
                         </div>
@@ -91,11 +92,39 @@ export default function AnimatedHome({ latestPosts }) {
                                 <a href="https://www.tix.id" target="_blank" style={{ fontSize: '1rem', opacity: 0.6 }}>↗</a>
                             </h3>
                             <p style={{ color: 'var(--text-muted)', marginBottom: '1rem', lineHeight: '1.6' }}>
-                                Developed and maintained backend services for Indonesia's leading movie ticketing platform, handling high-traffic booking systems and payment integrations.
+                                Built and maintained scalable backend services for movie and food ordering platforms. Refactored legacy systems, designed HLD documents, and enhanced deployment efficiency across multi-team codebases.
                             </p>
                             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
                                 <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>Go</span>
                                 <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>PostgreSQL</span>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>Redis</span>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>RabbitMQ</span>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>Kafka</span>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>Docker</span>
+                            </div>
+                        </div>
+                    </motion.div>
+
+                    {/* Waresix */}
+                    <motion.div
+                        variants={itemVariants}
+                        style={{ display: 'grid', gridTemplateColumns: '140px 1fr', gap: '2rem', alignItems: 'start' }}
+                    >
+                        <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 600, paddingTop: '0.25rem' }}>
+                            2022 — 2024
+                        </span>
+                        <div>
+                            <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                Backend Engineer • Waresix
+                                <a href="https://www.waresix.com" target="_blank" style={{ fontSize: '1rem', opacity: 0.6 }}>↗</a>
+                            </h3>
+                            <p style={{ color: 'var(--text-muted)', marginBottom: '1rem', lineHeight: '1.6' }}>
+                                Developed and optimized backend services for logistics operations. Applied TDD practices, improved API performance, and contributed to scaling large backend systems while enhancing maintainability.
+                            </p>
+                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>Go</span>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>PostgreSQL</span>
+                                <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>Redis</span>
                                 <span style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'rgba(100, 255, 218, 0.1)', color: 'rgb(100, 255, 218)', borderRadius: '12px' }}>Docker</span>
                             </div>
                         </div>
